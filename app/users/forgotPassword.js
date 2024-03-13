@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import {router} from "expo-router";
 
 const backgroundImage = require('../../assets/images/png/010c80.png');
 
@@ -13,9 +12,6 @@ export default function ForgotPassword() {
 
     const handleForgotPassword = () => {
         // Logic to handle forgot password
-        router.push({
-          pathname: "/users/resetPassword",
-        })
     }
 
     return (
@@ -39,6 +35,9 @@ export default function ForgotPassword() {
                     <TouchableOpacity style={styles.button} onPress={handleForgotPassword}>
                         <Text style={styles.buttonText}>Reset Password</Text>
                     </TouchableOpacity>
+
+
+
                 </View>
             </ImageBackground>
             <Text style={styles.footer}>© 2024 ChatterBox. All Rights Reserved.</Text>
