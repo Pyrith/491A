@@ -86,9 +86,9 @@ const styles = StyleSheet.create({
     instructions: {
         fontFamily: 'Cabin Condensed',
         fontSize: 16,
-        color: 'white',
+        color: 'black',
         marginBottom: 10,
-        textAlign: 'center',
+        //textAlign: 'center',
     },
     inputSection: {
         width: '90%',
