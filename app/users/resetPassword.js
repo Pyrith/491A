@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
+import {router} from "expo-router";
 
 const backgroundImage = require('../../assets/images/png/010c80.png');
 
@@ -19,6 +20,14 @@ export default function ResetPassword() {
         <View style={styles.container}>
             <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.image}>
                 <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
+
+                <Pressable                          // THIS TEMP BRINGS YOU TO RESET PASSWORD PAGE
+                    onPress={() => 
+                    router.push({
+                        pathname: "users/forgotPassword",
+                    })}>
+                        <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
+                </Pressable>
                 <Text style={styles.logoFont}>ChatterBox</Text>
                 <Text style={styles.title}>Reset Password</Text>
 

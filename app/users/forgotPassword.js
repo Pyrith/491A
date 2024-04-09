@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import {router} from "expo-router";
+import { useNavigation } from "expo-router";
+
 
 const backgroundImage = require('../../assets/images/png/010c80.png');
 
 export default function ForgotPassword() {
+    const navigate = useNavigation();
     const [fontsLoaded] = useFonts({
         'Cabin Condensed': require('../../assets/fonts/Cabin Condensed.ttf'),
     });
@@ -19,6 +22,11 @@ export default function ForgotPassword() {
         <View style={styles.container}>
             <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.image}>
                 <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
+                <Pressable style={styles.backArrowHitBox}
+                onPress={() => {navigate.goBack()}}>
+                <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
+                </Pressable>
+
                 <Text style={styles.logoFont}>ChatterBox</Text>
                 <Text style={styles.title}>Forgot Password</Text>
 
@@ -36,7 +44,7 @@ export default function ForgotPassword() {
                     <TouchableOpacity style={styles.button} onPress={handleForgotPassword}>
                         <Text style={styles.buttonText}>Reset Password</Text>
                     </TouchableOpacity>
-                    <Pressable 
+                    <Pressable                          // THIS TEMP BRINGS YOU TO RESET PASSWORD PAGE
                         onPress={() => 
                         router.push({
                             pathname: "/users/resetPassword",
@@ -56,15 +64,13 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',  
+        alignItems: 'flex-end',
     },
     tinyLogo: {
         width: 150,
         height: 70,
-        top: 35,
-        left: -20,
-        position: 'absolute',
+        margin: 20,   // Add margin for spacing
     },
     logoFont: {
         fontFamily: 'Cabin Condensed',
@@ -130,5 +136,18 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 16,
         marginTop: 10,
-    },
+    },backArrowHitBox: {
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: 45,
+        right: 20,
+      },
+     
+      backArrow: {
+        width: 35,
+        height: 35,
+      },
 });
