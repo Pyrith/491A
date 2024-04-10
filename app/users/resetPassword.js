@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import {router} from "expo-router";
+// import {router} from "expo-router";
+import { useNavigation } from "expo-router";
+// import { useRouter } from 'expo-next-react-navigation';
 
 const backgroundImage = require('../../assets/images/png/010c80.png');
 
+
 export default function ResetPassword() {
+    const navigate = useNavigation();
     const [fontsLoaded] = useFonts({
         'Cabin Condensed': require('../../assets/fonts/Cabin Condensed.ttf'),
     });
@@ -20,14 +24,10 @@ export default function ResetPassword() {
         <View style={styles.container}>
             <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.image}>
                 <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
-
                 <Pressable                          // THIS TEMP BRINGS YOU TO RESET PASSWORD PAGE
-                    onPress={() => 
-                    router.push({
-                        pathname: "users/forgotPassword",
-                    })}>
-                        <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
-                </Pressable>
+                        onPress={() => {navigate.navigate('index')}}>
+                            <Text style ={styles.fontID}>Don't have an account?<Text style={styles.registerLink}> Register</Text></Text>
+                    </Pressable>
                 <Text style={styles.logoFont}>ChatterBox</Text>
                 <Text style={styles.title}>Reset Password</Text>
 

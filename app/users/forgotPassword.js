@@ -23,7 +23,8 @@ export default function ForgotPassword() {
             <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.image}>
                 <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
                 <Pressable style={styles.backArrowHitBox}
-                onPress={() => {navigate.goBack()}}>
+                    //onPress={() => {navigate.goBack()}}>
+                    onPress={() => {navigate.goBack()}}>
                 <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
                 </Pressable>
 
